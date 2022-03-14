@@ -13,3 +13,7 @@ body{
 .options{
     padding: 20px;
 }
+.completed{
+    background-color: #faebd7;
+    text-decoration: line-through;
+}
