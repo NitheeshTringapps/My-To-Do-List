@@ -1,0 +1,15 @@
+body{
+    display: flex;;
+    align-items: center;
+    flex-direction: column;
+}
+#submit{
+    position: relative;
+    left: 100px;
+}
+.createList{
+    padding: 20px;
+}
+.options{
+    padding: 20px;
+}
