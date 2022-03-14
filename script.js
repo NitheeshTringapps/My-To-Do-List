@@ -1,37 +1,28 @@
-const i = 0;
 var myList = document.getElementById("myList");
 function addList(){
     var text = document.getElementById("newList").value;
+    document.getElementById("newList").value = ""
     var list = document.createElement("li");
+    var span = document.createElement("span");
     list.innerHTML=text;
     list.className = "l";
+    list.addEventListener('click', function(){
+        list.classList.toggle('completed');
+    })
     myList.appendChild(list);
-
-    // var liArray = document.querySelectorAll("li");
-    // console.log(liArray);
-    let liArray = document.getElementsByClassName("l");
-    for(let i = 0; i < liArray.length; i++){
-        liArray[i].addEventListener('click', function(){
-            this.classList.toggle('active');
-            // liArray[i].classList.toggle('active');
-        })
-    }
-
     
 }
 
-// var liArray = document.querySelectorAll("li");
-let liArray = document.getElementsByClassName("l");
-for(let i = 0; i < liArray.length; i++){
-    liArray[i].addEventListener('click', function(){
-        this.classList.toggle('active');
-        // liArray[i].classList.toggle('active');
-    })
+function empty(){
+    var elements = document.querySelectorAll(".l");
+    for(var x of elements){
+        x.remove();
+    }
 }
 
-// var liArray = document.querySelector('ol');
-// liArray.addEventListener('click', function(ev) {
-//    if (ev.target.tagName === 'li') {
-//    ev.target.classList.toggle('checked');
-// }
-// }, false);
+function clearComplete(){
+    var elements = document.querySelectorAll(".completed");
+    for(var x of elements){
+        x.remove();
+    }
+}
