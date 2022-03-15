@@ -10,7 +10,9 @@ function storeCredentials(){
             "userName": userName,
             "password": password
         }
+        console.log(JSON.stringify(details));
         localStorage.setItem("details", JSON.stringify(details));
+        alert("Account created Sucessfully!");
     }
     else{
         alert("Password and Confirm Password is not same");
@@ -23,8 +25,11 @@ function checkCredentials(){
     let userName = document.getElementById("userName").value;
     let password = document.getElementById("password").value;
     var details = JSON.parse(localStorage.getItem("details"));
-    console.log(details.userName);
-    console.log(details.password);
+    console.log(details);
+    if(!details){
+        alert("No accounts found! Sign up a new account!");
+        return false;
+    }
     if(userName == details.userName && password == details.password){
         return true;
     }
@@ -35,19 +40,19 @@ function checkCredentials(){
 }
 
 // To Do List
-var myList = document.getElementById("myList");
 function addList(){
-    var text = document.getElementById("newList").value;
-    document.getElementById("newList").value = ""
-    var list = document.createElement("li");
-    var span = document.createElement("span");
-    list.innerHTML=text;
-    list.className = "l";
-    list.addEventListener('click', function(){
-        list.classList.toggle('completed');
-    })
-    myList.appendChild(list);
-    
+    if(document.getElementById("newList").value != ""){
+        var myList = document.getElementById("myList");
+        var text = document.getElementById("newList").value;
+        document.getElementById("newList").value = "";
+        var list = document.createElement("li");
+        list.innerHTML=text;
+        list.className = "l";
+        list.addEventListener('click', function(){
+            list.classList.toggle('completed');
+        })
+        myList.appendChild(list);
+    }
 }
 
 function empty(){
@@ -67,9 +72,17 @@ function clearComplete(){
 function save(){
     var saveList = document.getElementById("myList").innerHTML;
     localStorage.setItem("saveList", JSON.stringify(saveList));
+    alert("Saved Successfully! Click Show Saved List to view your Saved List");
+    document.getElementById("myList").innerHTML = "";
 }
 
 function showSavedList(){
     var savedList = localStorage.getItem("saveList");
     document.getElementById("myList").innerHTML = JSON.parse(savedList);
+    var listObject = document.querySelectorAll("li");
+    for(var li of listObject){
+        li.addEventListener('click', function(){
+            this.classList.toggle('completed');
+        })
+    }
 }
