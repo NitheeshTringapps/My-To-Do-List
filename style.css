@@ -5,7 +5,7 @@ body{
 }
 #submit{
     position: relative;
-    left: 100px;
+    left: 140px;
 }
 .createList{
     padding: 20px;
@@ -16,4 +16,8 @@ body{
 .completed{
     background-color: #faebd7;
     text-decoration: line-through;
+}
+label {
+    display: inline-block;
+    width: 150px;
 }
