@@ -6,18 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <h1>To do List Sign In:</h1><br><br>
     <div class="signin">
-        <form action="myToDoList.html" method="get">
-            <label for="username">User Name:</label>
-            <input type="text" name="username" id="username" required><br><br><br>
+        <form action="myToDoList.html" method="get" onSubmit="return checkCredentials()">
+            <label for="userName">User Name:</label>
+            <input type="text" name="username" id="userName" required><br><br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" required><br><br><br>
-            <button type="submit" id="submit" onclick="myToDoList.html">Sign In</button><br><br><br><br><br><br>
+            <button type="submit" id="submit">Sign In</button><br><br><br><br><br><br>
         </form>     
     </div>
-    <button>Sign Up</button>
+    <a href="signup.html">Sign Up</a>
 </body>
 </html>
